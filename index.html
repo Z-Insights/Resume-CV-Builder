@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV-Crucible: Forge Your Digital Original</title>
+    
+    <!-- HEPHAESTUS FORGE: Typographic Standard & Core Libraries -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- HEPHAESTUS FORGE: PDF Generation Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" xintegrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        /*
+         * HEPHAESTUS FORGE: Unified Design System
+         * Classification: Immutable Aesthetic Protocol
+         * Adherence: Absolute. Sovereign Color Palette, Typographic Standard.
+         */
+        :root {
+            --sovereign-void: #111827; /* Gray 900 */
+            --sovereign-steel: #374151; /* Gray 700 */
+            --sovereign-light: #F9FAFB; /* Gray 50 */
+            --sovereign-cyan: #06b6d4; /* Cyan 500 */
+            --dominion-white: #FFFFFF;
+            --threat-red: #ef4444; /* Red 500 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--sovereign-void);
+        }
+        .form-section {
+            background-color: #1f2937; /* Gray 800 */
+            border: 1px solid var(--sovereign-steel);
+        }
+        .form-label {
+            color: #d1d5db; /* Gray 300 */
+            font-weight: 500;
+        }
+        .form-input, .form-textarea, .form-checkbox {
+            background-color: var(--sovereign-void);
+            border: 1px solid var(--sovereign-steel);
+            color: var(--dominion-white);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--sovereign-cyan);
+            box-shadow: 0 0 0 2px var(--sovereign-cyan);
+        }
+        .form-checkbox {
+            accent-color: var(--sovereign-cyan);
+        }
+        .bisaya-tooltip {
+            color: #9ca3af; /* Gray 400 */
+            font-size: 0.875rem;
+            font-style: italic;
+        }
+        .forge-button {
+            background-color: var(--sovereign-cyan);
+            color: var(--dominion-white);
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .forge-button:hover {
+            background-color: #0891b2; /* Cyan 600 */
+        }
+        .forge-button:active {
+            transform: scale(0.98);
+        }
+        .required-indicator {
+            color: var(--threat-red);
+        }
+        /* Styles for the hidden CV template */
+        #cv-template {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 8.5in;
+            height: 11in;
+            background: white;
+            color: #111827;
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+        }
+        #cv-template h1 { font-size: 24pt; font-weight: 700; margin-bottom: 4px; color: #1f2937;}
+        #cv-template h2 { font-size: 11pt; font-weight: 600; color: var(--sovereign-cyan); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
+        #cv-template h3 { font-size: 10pt; font-weight: 700; }
+        #cv-template p { line-height: 1.5; }
+        #cv-template .cv-section { margin-bottom: 16px; }
+        #cv-template .contact-info { font-size: 9pt; }
+        #cv-template .highlight { background-color: var(--sovereign-cyan); color: white; padding: 4px 8px; border-radius: 4px; font-weight: 600; }
+    </style>
+</head>
+<body class="bg-gray-900 text-white p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">CV-Crucible</h1>
+            <p class="text-cyan-400 font-semibold text-lg">From Raw Skill, A Forged Identity</p>
+            <p class="text-gray-400 mt-2 max-w-2xl mx-auto">This tool will transmute your professional details into a perfected, unassailable "Digital Original" CV, ready to command attention and secure opportunity.</p>
+        </header>
+
+        <form id="cv-intake-form" class="space-y-6">
+
+            <!-- Personal Information -->
+            <section class="form-section p-6 rounded-lg">
+                <h2 class="text-2xl font-bold text-cyan-400 border-b border-gray-700 pb-2 mb-4">Personal Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="full-name" class="form-label block">Full Name <span class="required-indicator">*</span></label>
+                        <p class="bisaya-tooltip">Tibuok Ngalan</p>
+                        <input type="text" id="full-name" name="fullName" class="form-input w-full mt-1 p-2 rounded-md" required>
+                    </div>
+                    <div>
+                        <label for="trade-specialization" class="form-label block">Trade Specialization <span class="required-indicator">*</span></label>
+                        <p class="bisaya-tooltip">Espesyalista sa Trabaho</p>
+                        <input type="text" id="trade-specialization" name="tradeSpecialization" class="form-input w-full mt-1 p-2 rounded-md" required>
+                    </div>
+                    <div>
+                        <label for="phone" class="form-label block">Phone Number <span class="required-indicator">*</span></label>
+                        <p class="bisaya-tooltip">Numero sa Telepono</p>
+                        <input type="tel" id="phone" name="phone" class="form-input w-full mt-1 p-2 rounded-md" required>
+                    </div>
+                    <div>
+                        <label for="email" class="form-label block">Email Address</label>
+                        <p class="bisaya-tooltip">Email Address</p>
+                        <input type="email" id="email" name="email" class="form-input w-full mt-1 p-2 rounded-md">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="address" class="form-label block">Address <span class="required-indicator">*</span></label>
+                        <p class="bisaya-tooltip">Puy-anan</p>
+                        <input type="text" id="address" name="address" class="form-input w-full mt-1 p-2 rounded-md" required>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Professional Profile -->
+            <section class="form-section p-6 rounded-lg">
+                <h2 class="text-2xl font-bold text-cyan-400 border-b border-gray-700 pb-2 mb-4">Professional Profile</h2>
+                <div>
+                    <label for="profile" class="form-label block">Summary of your skills and career goals. <span class="required-indicator">*</span></label>
+                    <p class="bisaya-tooltip">Katingbanan sa imong kahanas ug mga tumong sa karera.</p>
+                    <textarea id="profile" name="profile" rows="4" class="form-textarea w-full mt-1 p-2 rounded-md" required></textarea>
+                </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section class="form-section p-6 rounded-lg">
+                <h2 class="text-2xl font-bold text-cyan-400 border-b border-gray-700 pb-2 mb-4">Work Experience</h2>
+                <div id="work-experience-container" class="space-y-4">
+                    <!-- JS will populate this -->
+                </div>
+                <button type="button" id="add-experience" class="mt-4 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 rounded-md text-sm font-semibold">Add Experience</button>
+            </section>
+            
+            <!-- Projects in Cebu -->
+            <section class="form-section p-6 rounded-lg">
+                <h2 class="text-2xl font-bold text-cyan-400 border-b border-gray-700 pb-2 mb-4">Major Projects Handled in Cebu</h2>
+                 <div id="projects-container" class="space-y-4">
+                    <!-- JS will populate this -->
+                </div>
+                <button type="button" id="add-project" class="mt-4 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 rounded-md text-sm font-semibold">Add Project</button>
+            </section>
+
+            <!-- Skills & Tools -->
+            <section class="form-section p-6 rounded-lg">
+                <h2 class="text-2xl font-bold text-cyan-400 border-b border-gray-700 pb-2 mb-4">Skills & Tools Mastered</h2>
+                <p class="bisaya-tooltip mb-4">Mga Kahanas ug Himan nga Hanas</p>
+                <div id="skills-container" class="space-y-2">
+                    <!-- JS will populate this -->
+                </div>
+                 <button type="button" id="add-skill" class="mt-4 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 rounded-md text-sm font-semibold">Add Skill</button>
+            </section>
+
+            <!-- Certifications -->
+            <section class="form-section p-6 rounded-lg">
+                <h2 class="text-2xl font-bold text-cyan-400 border-b border-gray-700 pb-2 mb-4">Certifications & Training</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="form-label block">TESDA National Certificates (NC)</label>
+                        <p class="bisaya-tooltip">Listahan sa mga NC, e.g., "Carpentry NC II", "Masonry NC II"</p>
+                        <input type="text" id="tesda-certs" name="tesdaCerts" class="form-input w-full mt-1 p-2 rounded-md" placeholder="e.g., Carpentry NC II, Masonry NC II">
+                    </div>
+                    <div>
+                        <label class="form-label block">Safety Officer Training</label>
+                        <div class="flex items-center space-x-4 mt-2">
+                            <label class="flex items-center"><input type="checkbox" name="safetyTraining" value="BOSH" class="form-checkbox h-5 w-5 mr-2">BOSH</label>
+                            <label class="flex items-center"><input type="checkbox" name="safetyTraining" value="COSH" class="form-checkbox h-5 w-5 mr-2">COSH</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="other-certs" class="form-label block">Other Seminars & Trainings</label>
+                        <textarea id="other-certs" name="otherCerts" rows="3" class="form-textarea w-full mt-1 p-2 rounded-md"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="form-section p-6 rounded-lg">
+                <h2 class="text-2xl font-bold text-cyan-400 border-b border-gray-700 pb-2 mb-4">Education</h2>
+                <div id="education-container" class="space-y-4">
+                     <!-- JS will populate this -->
+                </div>
+                <button type="button" id="add-education" class="mt-4 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 rounded-md text-sm font-semibold">Add Education</button>
+            </section>
+
+            <!-- Physical Traits -->
+            <section class="form-section p-6 rounded-lg">
+                <h2 class="text-2xl font-bold text-cyan-400 border-b border-gray-700 pb-2 mb-4">Physical & Health Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="height" class="form-label block">Height</label>
+                        <input type="text" id="height" name="height" class="form-input w-full mt-1 p-2 rounded-md" placeholder="e.g., 5'8&quot;">
+                    </div>
+                    <div>
+                        <label for="weight" class="form-label block">Weight</label>
+                        <input type="text" id="weight" name="weight" class="form-input w-full mt-1 p-2 rounded-md" placeholder="e.g., 70kg">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="physical-details" class="form-label block">Other relevant details</label>
+                        <p class="bisaya-tooltip">e.g., "Can lift 50kg+", "No fear of heights"</p>
+                        <input type="text" id="physical-details" name="physicalDetails" class="form-input w-full mt-1 p-2 rounded-md">
+                    </div>
+                </div>
+            </section>
+
+            <!-- References -->
+            <section class="form-section p-6 rounded-lg">
+                <h2 class="text-2xl font-bold text-cyan-400 border-b border-gray-700 pb-2 mb-4">References</h2>
+                <p class="text-gray-400 mb-4">Provide at least two professional references.</p>
+                <div id="references-container" class="space-y-4">
+                    <!-- JS will populate this -->
+                </div>
+                <button type="button" id="add-reference" class="mt-4 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 rounded-md text-sm font-semibold">Add Reference</button>
+            </section>
+
+            <!-- Submission -->
+            <div class="pt-6">
+                <button type="submit" id="forge-button" class="forge-button w-full py-3 px-6 rounded-md text-lg">
+                    FORGE MY CV
+                </button>
+                <div id="loading-indicator" class="hidden text-center mt-4">
+                    <p class="text-cyan-400">Forging your Digital Original... Please wait.</p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Hidden CV Template for PDF Generation -->
+    <div id="cv-template">
+        <!-- This will be populated by JavaScript -->
+    </div>
+
+    <script>
+    // HEPHAESTUS FORGE: Core Logic & Forging Engine
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('cv-intake-form');
+        const forgeButton = document.getElementById('forge-button');
+        const loadingIndicator = document.getElementById('loading-indicator');
+
+        // --- DYNAMIC FIELD MANAGEMENT ---
+
+        function createDynamicField(containerId, placeholder, namePrefix) {
+            const container = document.getElementById(containerId);
+            const index = container.children.length;
+            const div = document.createElement('div');
+            div.className = 'flex items-center space-x-2';
+            div.innerHTML = `
+                <input type="text" name="${namePrefix}[${index}]" class="form-input w-full p-2 rounded-md" placeholder="${placeholder}">
+                <button type="button" class="remove-field px-3 py-2 bg-red-600 hover:bg-red-700 rounded-md text-sm font-semibold">&times;</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function createWorkExperienceFields() {
+            const container = document.getElementById('work-experience-container');
+            const index = container.children.length;
+            const div = document.createElement('div');
+            div.className = 'p-4 border border-gray-700 rounded-md space-y-2 relative';
+            div.innerHTML = `
+                <button type="button" class="remove-experience absolute top-2 right-2 px-3 py-1 bg-red-600 hover:bg-red-700 rounded-full text-sm font-bold">&times;</button>
+                <input type="text" name="work[${index}][company]" class="form-input w-full p-2 rounded-md" placeholder="Company Name / Employer *">
+                <input type="text" name="work[${index}][position]" class="form-input w-full p-2 rounded-md" placeholder="Position / Job Title *">
+                <input type="text" name="work[${index}][dates]" class="form-input w-full p-2 rounded-md" placeholder="Dates (e.g., Jan 2020 - Present) *">
+                <textarea name="work[${index}][responsibilities]" rows="3" class="form-textarea w-full p-2 rounded-md" placeholder="Key Responsibilities & Achievements *"></textarea>
+            `;
+            container.appendChild(div);
+        }
+        
+        function createProjectFields() {
+            const container = document.getElementById('projects-container');
+            const index = container.children.length;
+            const div = document.createElement('div');
+            div.className = 'flex items-center space-x-2';
+            div.innerHTML = `
+                <input type="text" name="projects[${index}]" class="form-input w-full p-2 rounded-md" placeholder="e.g., SM Seaside City (Masonry)">
+                <button type="button" class="remove-field px-3 py-2 bg-red-600 hover:bg-red-700 rounded-md text-sm font-semibold">&times;</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function createEducationFields() {
+            const container = document.getElementById('education-container');
+            const index = container.children.length;
+            const div = document.createElement('div');
+            div.className = 'p-4 border border-gray-700 rounded-md space-y-2 relative';
+            div.innerHTML = `
+                <button type="button" class="remove-education absolute top-2 right-2 px-3 py-1 bg-red-600 hover:bg-red-700 rounded-full text-sm font-bold">&times;</button>
+                <input type="text" name="education[${index}][school]" class="form-input w-full p-2 rounded-md" placeholder="School / University *">
+                <input type="text" name="education[${index}][degree]" class="form-input w-full p-2 rounded-md" placeholder="Degree / Course *">
+                <input type="text" name="education[${index}][year]" class="form-input w-full p-2 rounded-md" placeholder="Year Graduated *">
+            `;
+            container.appendChild(div);
+        }
+
+        function createReferenceFields() {
+            const container = document.getElementById('references-container');
+            const index = container.children.length;
+            const div = document.createElement('div');
+            div.className = 'p-4 border border-gray-700 rounded-md space-y-2 relative';
+            div.innerHTML = `
+                <button type="button" class="remove-reference absolute top-2 right-2 px-3 py-1 bg-red-600 hover:bg-red-700 rounded-full text-sm font-bold">&times;</button>
+                <input type="text" name="references[${index}][name]" class="form-input w-full p-2 rounded-md" placeholder="Reference Name *">
+                <input type="text" name="references[${index}][title]" class="form-input w-full p-2 rounded-md" placeholder="Title & Company *">
+                <input type="text" name="references[${index}][contact]" class="form-input w-full p-2 rounded-md" placeholder="Contact Number *">
+            `;
+            container.appendChild(div);
+        }
+
+        // --- EVENT LISTENERS FOR DYNAMIC FIELDS ---
+        document.getElementById('add-skill').addEventListener('click', () => createDynamicField('skills-container', 'e.g., Masonry (CHB Laying, Plastering)', 'skills'));
+        document.getElementById('add-experience').addEventListener('click', createWorkExperienceFields);
+        document.getElementById('add-project').addEventListener('click', createProjectFields);
+        document.getElementById('add-education').addEventListener('click', createEducationFields);
+        document.getElementById('add-reference').addEventListener('click', createReferenceFields);
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-field') || e.target.classList.contains('remove-experience') || e.target.classList.contains('remove-education') || e.target.classList.contains('remove-reference')) {
+                e.target.parentElement.remove();
+            }
+        });
+        
+        // Initialize with one of each dynamic field type
+        createWorkExperienceFields();
+        createProjectFields();
+        createSkillFields();
+        createEducationFields();
+        createReferenceFields();
+        createReferenceFields();
+
+        function createSkillFields() {
+            createDynamicField('skills-container', 'e.g., Masonry (CHB Laying, Plastering)', 'skills');
+        }
+
+
+        // --- FORM SUBMISSION & PDF FORGING ---
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            forgeButton.disabled = true;
+            loadingIndicator.classList.remove('hidden');
+
+            // 1. Package form data into a structured JSON object
+            const formData = new FormData(form);
+            const data = {
+                work: [],
+                education: [],
+                references: [],
+                skills: [],
+                projects: [],
+                safetyTraining: []
+            };
+
+            // This complex loop is necessary to handle dynamic fields correctly
+            for (let [key, value] of formData.entries()) {
+                if (value.trim() === '') continue;
+
+                let match;
+                if ((match = key.match(/^work\[(\d+)\]\[(\w+)\]$/))) {
+                    const [, index, prop] = match;
+                    if (!data.work[index]) data.work[index] = {};
+                    data.work[index][prop] = value;
+                } else if ((match = key.match(/^education\[(\d+)\]\[(\w+)\]$/))) {
+                    const [, index, prop] = match;
+                    if (!data.education[index]) data.education[index] = {};
+                    data.education[index][prop] = value;
+                } else if ((match = key.match(/^references\[(\d+)\]\[(\w+)\]$/))) {
+                    const [, index, prop] = match;
+                    if (!data.references[index]) data.references[index] = {};
+                    data.references[index][prop] = value;
+                } else if ((match = key.match(/^skills\[(\d+)\]$/))) {
+                    data.skills.push(value);
+                } else if ((match = key.match(/^projects\[(\d+)\]$/))) {
+                    data.projects.push(value);
+                } else if (key === 'safetyTraining') {
+                    data.safetyTraining.push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Filter out any empty objects that might have been created
+            data.work = data.work.filter(w => w && w.company && w.position && w.dates && w.responsibilities);
+            data.education = data.education.filter(edu => edu && edu.school && edu.degree && edu.year);
+            data.references = data.references.filter(ref => ref && ref.name && ref.title && ref.contact);
+
+            // 2. Populate the hidden CV template
+            populateCvTemplate(data);
+
+            // 3. Forge the PDF
+            forgePdf(data.fullName);
+        });
+
+        function quantifyText(text) {
+            if (!text) return '';
+            // Bolds numbers and common units like sqm, kg, +, etc.
+            return text.replace(/(\b\d+[\d,.]*\+?\b\s*(sqm|kg|meters|ft|pcs|blocks|bags)?)/gi, '<strong>$1</strong>');
+        }
+
+        function populateCvTemplate(data) {
+            const template = document.getElementById('cv-template');
+            
+            let safetyCertsHtml = '';
+            if (data.safetyTraining && data.safetyTraining.length > 0) {
+                safetyCertsHtml += data.safetyTraining.map(cert => `<span class="highlight">${cert}</span>`).join(' ');
+            }
+            
+            let tesdaCertsHtml = '';
+            if(data.tesdaCerts) {
+                tesdaCertsHtml = data.tesdaCerts.split(',').map(cert => `<span class="highlight">${cert.trim()}</span>`).join(' ');
+            }
+            
+            const certificationsHtml = `
+                ${(safetyCertsHtml || tesdaCertsHtml) ? `
+                <div class="cv-section text-center p-4 bg-gray-100 rounded-lg">
+                    <h2 class="text-center border-none m-0 p-0">Key Certifications</h2>
+                    <div class="flex justify-center items-center flex-wrap gap-2 mt-2">
+                        ${tesdaCertsHtml} ${safetyCertsHtml}
+                    </div>
+                </div>` : ''}
+            `;
+
+            template.innerHTML = `
+                <div class="p-8">
+                    <header class="text-center pb-4 mb-4 border-b-2 border-gray-200">
+                        <h1>${data.fullName || ''}</h1>
+                        <p class="text-lg font-semibold text-gray-700">${data.tradeSpecialization || ''}</p>
+                        <div class="contact-info text-gray-600 mt-2">
+                            <span>${data.address || ''}</span> | 
+                            <span>${data.phone || ''}</span> 
+                            ${data.email ? `| <span>${data.email}</span>` : ''}
+                        </div>
+                    </header>
+                    
+                    ${certificationsHtml}
+
+                    <div class="grid grid-cols-3 gap-6 mt-4">
+                        <div class="col-span-2">
+                            ${data.profile ? `<div class="cv-section"><h2>Professional Profile</h2><p>${data.profile}</p></div>` : ''}
+                            
+                            ${data.work && data.work.length > 0 ? `
+                            <div class="cv-section">
+                                <h2>Work Experience</h2>
+                                ${data.work.map(w => `
+                                    <div class="mb-4">
+                                        <h3>${w.position}</h3>
+                                        <p class="font-semibold text-gray-800">${w.company} | ${w.dates}</p>
+                                        <ul class="list-disc list-inside mt-1 text-gray-700">
+                                            ${w.responsibilities.split('\n').map(r => `<li>${quantifyText(r)}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                `).join('')}
+                            </div>` : ''}
+
+                            ${data.projects && data.projects.length > 0 ? `
+                            <div class="cv-section">
+                                <h2>Major Projects Handled in Cebu</h2>
+                                <ul class="list-disc list-inside text-gray-700">
+                                    ${data.projects.map(p => `<li>${p}</li>`).join('')}
+                                </ul>
+                            </div>` : ''}
+                        </div>
+
+                        <div class="col-span-1">
+                            ${data.skills && data.skills.length > 0 ? `
+                            <div class="cv-section">
+                                <h2>Skills & Tools</h2>
+                                <ul class="list-disc list-inside text-gray-700">
+                                    ${data.skills.map(s => `<li>${quantifyText(s)}</li>`).join('')}
+                                </ul>
+                            </div>` : ''}
+
+                            ${data.education && data.education.length > 0 ? `
+                            <div class="cv-section">
+                                <h2>Education</h2>
+                                ${data.education.map(edu => `
+                                    <div class="mb-2">
+                                        <h3>${edu.degree}</h3>
+                                        <p class="text-gray-800">${edu.school}</p>
+                                        <p class="text-gray-600">${edu.year}</p>
+                                    </div>
+                                `).join('')}
+                            </div>` : ''}
+                            
+                            ${data.otherCerts ? `
+                            <div class="cv-section">
+                                <h2>Other Training</h2>
+                                <p class="text-gray-700">${data.otherCerts.replace(/\n/g, '<br>')}</p>
+                            </div>` : ''}
+
+                            ${(data.height || data.weight || data.physicalDetails) ? `
+                            <div class="cv-section">
+                                <h2>Physical Traits</h2>
+                                <ul class="list-none text-gray-700">
+                                    ${data.height ? `<li><strong>Height:</strong> ${data.height}</li>` : ''}
+                                    ${data.weight ? `<li><strong>Weight:</strong> ${data.weight}</li>` : ''}
+                                    ${data.physicalDetails ? `<li>${quantifyText(data.physicalDetails)}</li>` : ''}
+                                </ul>
+                            </div>` : ''}
+
+                            ${data.references && data.references.length > 0 ? `
+                            <div class="cv-section">
+                                <h2>References</h2>
+                                ${data.references.map(ref => `
+                                    <div class="mb-2">
+                                        <h3>${ref.name}</h3>
+                                        <p class="text-gray-800">${ref.title}</p>
+                                        <p class="text-gray-600">${ref.contact}</p>
+                                    </div>
+                                `).join('')}
+                            </div>` : `<div class="cv-section"><h2>References</h2><p>Available upon request.</p></div>`}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+
+        function forgePdf(fileName) {
+            const element = document.getElementById('cv-template');
+            const safeFileName = (fileName || 'Generated-CV').replace(/[^a-z0-9]/gi, '_').toLowerCase();
+
+            const opt = {
+                margin:       0,
+                filename:     `CV-${safeFileName}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 4, letterRendering: true, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Use a timeout to ensure the DOM is fully updated before PDF generation
+            setTimeout(() => {
+                html2pdf().set(opt).from(element).save().then(() => {
+                    // Reset button state after PDF is saved
+                    forgeButton.disabled = false;
+                    loadingIndicator.classList.add('hidden');
+                });
+            }, 500); // 500ms delay
+        }
+    });
+    </script>
+</body>
+</html>
